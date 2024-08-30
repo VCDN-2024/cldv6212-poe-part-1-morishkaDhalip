@@ -1,0 +1,25 @@
+﻿@model Part1Cloud2B.Models.Product
+
+@{
+    ViewBag.Title = "Delete Product";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Are you sure you want to delete this product?</h3>
+
+<div>
+    <h4>@Model.Name</h4>
+    <p>Price: @Model.Price</p>
+    <p>@Model.description</p>
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" alt="Product Image" style="max-width: 100px; height: auto;" />
+    }
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="RowKey" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "Product")" class="btn btn-secondary">Cancel</a>
+</form>

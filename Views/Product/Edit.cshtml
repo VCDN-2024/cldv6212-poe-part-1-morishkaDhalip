@@ -1,0 +1,36 @@
+﻿@model Part1Cloud2B.Models.Product
+
+@{
+    ViewBag.Title = "Edit Product";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name">Product Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="description">Description</label>
+        <textarea asp-for="description" class="form-control"></textarea>
+        <span asp-validation-for="description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl">Product Image</label>
+        <input type="file" name="imageFile" class="form-control" />
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" alt="Product Image" style="max-width: 100px; height: auto;" />
+        }
+    </div>
+    <input type="hidden" asp-for="RowKey" /> <!-- Ensure the RowKey is passed -->
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="@Url.Action("Index", "Product")" class="btn btn-secondary">Back to List</a>
+</form>

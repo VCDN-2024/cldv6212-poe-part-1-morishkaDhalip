@@ -1,0 +1,64 @@
+﻿@model Part1Cloud2B.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "Place Your Order";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>@ViewBag.Title</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        <!-- Product Dropdown -->
+                        <div class="form-group">
+                            <label asp-for="ProductId" class="font-weight-bold">Select Product</label>
+                            <select asp-for="ProductId" class="form-control">
+                                <option value="">-- Select a Product --</option>
+                                @foreach (var product in Model.Products)
+                                {
+                                    <option value="@product.Value">@product.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="ProductId" class="text-danger"></span>
+                        </div>
+
+                        <!-- Customer Information -->
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label asp-for="CustomerName" class="font-weight-bold">First Name</label>
+                                <input asp-for="CustomerName" class="form-control" placeholder="Enter your first name" />
+                                <span asp-validation-for="CustomerName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CustomerSurname" class="font-weight-bold">Surname</label>
+                                <input asp-for="CustomerSurname" class="form-control" placeholder="Enter your surname" />
+                                <span asp-validation-for="CustomerSurname" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="CustomerEmail" class="font-weight-bold">Email</label>
+                            <input asp-for="CustomerEmail" class="form-control" placeholder="Enter your email address" />
+                            <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+                        </div>
+
+                        <!-- Quantity Selection -->
+                        <div class="form-group">
+                            <label asp-for="Quantity" class="font-weight-bold">Quantity</label>
+                            <input asp-for="Quantity" class="form-control" type="number" min="1" placeholder="Enter the quantity" />
+                            <span asp-validation-for="Quantity" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Place Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

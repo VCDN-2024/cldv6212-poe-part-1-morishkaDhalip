@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "Upload File";
+}
+
+<style>
+    body {
+        background-color: #f5f5dc; /* Beige background */
+    }
+
+    .text-dark-green {
+        color: #004d00; /* Dark Green color */
+    }
+
+    .btn-dark-green {
+        background-color: #004d00; /* Dark Green button color */
+        color: #fff;
+    }
+
+        .btn-dark-green:hover {
+            background-color: #003300; /* Darker Green on hover */
+            color: #fff;
+        }
+
+    .form-container {
+        background-color: #ffffff; /* White background for form */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        margin-bottom: 30px;
+    }
+
+    .form-group label {
+        color: #004d00; /* Dark Green label color */
+        font-weight: bold;
+    }
+
+    .form-group input[type="file"] {
+        border: 2px solid #004d00; /* Dark Green border */
+    }
+
+        .form-group input[type="file"]:focus {
+            border-color: #003300; /* Darker Green on focus */
+            box-shadow: 0 0 5px rgba(0, 51, 0, 0.5); /* Dark Green glow on focus */
+        }
+
+    .message {
+        color: #004d00;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .section-title {
+        color: #004d00; /* Dark Green */
+        margin-top: 40px;
+        font-weight: bold;
+    }
+
+    .instructions, .faq {
+        background-color: #e0e0d1; /* Lighter beige */
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .previous-uploads {
+        background-color: #e0e0d1; /* Lighter beige */
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+        .previous-uploads ul {
+            padding-left: 20px;
+        }
+
+            .previous-uploads ul li {
+                margin-bottom: 10px;
+            }
+</style>
+
+<div class="container mt-5">
+    <!-- Form Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-container">
+                <h2 class="text-center text-dark-green">@ViewBag.Title</h2>
+                <p class="text-center text-muted">Use the form below to upload files such as product reviews or complaints. Please ensure the file size does not exceed 5MB.</p>
+                <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file">Select a file to upload</label>
+                        <input type="file" name="file" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-dark-green btn-block">Upload</button>
+                </form>
+
+                @if (ViewBag.Message != null)
+                {
+                    <p class="message text-center">@ViewBag.Message</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="instructions">
+                <h3 class="section-title">Instructions for Uploading Files</h3>
+                <ul>
+                    <li>Ensure your file is in one of the following formats: PDF, DOCX, JPG, PNG.</li>
+                    <li>The maximum file size allowed is 5MB.</li>
+                    <li>Please provide relevant and accurate details within the file.</li>
+                    <li>If you have any issues, contact our support team using the "Contact Us" form below.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Previous Uploads Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="previous-uploads">
+                <h3 class="section-title">Your Previous Uploads</h3>
+                <ul>
+                    <li>Product Review - [Filename1.pdf] - Uploaded on [Date]</li>
+                    <li>Complaint - [Filename2.jpg] - Uploaded on [Date]</li>
+                    <li>Feedback - [Filename3.docx] - Uploaded on [Date]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="faq">
+                <h3 class="section-title">Frequently Asked Questions</h3>
+                <p><strong>Q:</strong> What file types are accepted?</p>
+                <p><strong>A:</strong> We accept PDF, DOCX, JPG, and PNG files.</p>
+                <p><strong>Q:</strong> How can I ensure my file is uploaded successfully?</p>
+                <p><strong>A:</strong> Make sure your file is under 5MB and in an accepted format. If you encounter issues, please contact support.</p>
+                <p><strong>Q:</strong> What happens after I upload a file?</p>
+                <p><strong>A:</strong> After uploading, you'll receive a confirmation message, and our team will review your submission.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-4 bg-dark-green text-white text-center">
+        <p>&copy; @DateTime.Now.Year ABC Retail. All rights reserved.</p>
+        <p>Follow us on <a href="#" class="text-white">Facebook</a>, <a href="#" class="text-white">Instagram</a>, and <a href="#" class="text-white">Twitter</a>.</p>
+    </footer>
+</div>
+

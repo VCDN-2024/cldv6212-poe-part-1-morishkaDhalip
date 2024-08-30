@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Part1Cloud2B.Models.CustomerProfile>
+
+@{
+    ViewBag.Title = "Customer List";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!-- Add Customer Button -->
+<a href="@Url.Action("Create", "Customer")" class="btn btn-success mb-3">Add Customer</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>@customer.Address</td>
+            </tr>
+        }
+    </tbody>
+</table>

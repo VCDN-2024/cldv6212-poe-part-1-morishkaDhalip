@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Welcome to ABC Retail";
+}
+
+<style>
+    .bg-beige {
+        background-color: #f5f5dc; /* Beige color */
+    }
+
+    .text-dark-green {
+        color: #004d00; /* Dark Green color */
+    }
+
+    .btn-dark-green {
+        background-color: #004d00; /* Dark Green color */
+        color: #fff;
+    }
+
+        .btn-dark-green:hover {
+            background-color: #003300; /* Darker Green on hover */
+            color: #fff;
+        }
+
+    .bg-dark-green {
+        background-color: #004d00; /* Dark Green background */
+    }
+
+    .shadow-custom {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Custom shadow */
+    }
+</style>
+
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center bg-beige text-dark-green shadow-custom">
+        <h1 class="display-4">Welcome to ABC Retail</h1>
+        <p class="lead">Your one-stop shop for all your retail needs. Discover a wide range of products at unbeatable prices.</p>
+        <a href="#about-us" class="btn btn-dark-green btn-lg">Learn More</a>
+    </div>
+
+    <!-- About Section -->
+    <div id="about-us" class="row mt-5">
+        <div class="col-md-6">
+            <div class="img-container">
+                <img src="data:image/png;base64,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" class="img-fluid rounded shadow-custom" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <div>
+                <h2 class="text-dark-green">About ABC Retail</h2>
+                <p class="text-dark-green">At ABC Retail, we are committed to providing the best products and services to our customers. Whether you're shopping for electronics, clothing, or home goods, we have it all. Our mission is to deliver quality products at competitive prices, with exceptional customer service.</p>
+                <a href="#contact-us" class="btn btn-dark-green">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Us Section -->
+    <div id="contact-us" class="mt-5">
+        <h2 class="text-center text-dark-green">Get in Touch</h2>
+        <p class="text-center text-muted">We'd love to hear from you. Reach out to us for any queries or support.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="text-dark-green">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="text-dark-green">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="text-dark-green">Message</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Write your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark-green btn-block">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-4 bg-dark-green text-white text-center">
+        <p>&copy; @DateTime.Now.Year ABC Retail. All rights reserved.</p>
+        <p>Follow us on <a href="#" class="text-white">Facebook</a>, <a href="#" class="text-white">Instagram</a>, and <a href="#" class="text-white">Twitter</a>.</p>
+    </footer>
+</div>
+
+

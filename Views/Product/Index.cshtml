@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Part1Cloud2B.Models.Product>
+
+@{
+    ViewBag.Title = "Product List";
+}
+
+<style>
+    .bg-beige {
+        background-color: #f5f5dc; /* Beige color */
+    }
+
+    .text-dark-green {
+        color: #004d00; /* Dark Green color */
+    }
+
+    .btn-dark-green {
+        background-color: #004d00; /* Dark Green color */
+        color: #fff;
+    }
+
+        .btn-dark-green:hover {
+            background-color: #003300; /* Darker Green on hover */
+            color: #fff;
+        }
+
+    .card-dark-green {
+        background-color: #004d00; /* Dark Green background */
+        color: #fff;
+    }
+
+        .card-dark-green .card-footer {
+            background-color: #003300; /* Darker green for the footer */
+        }
+
+    .shadow-custom {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Custom shadow */
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="mb-4 text-dark-green">@ViewBag.Title</h2>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-12 text-right">
+            <a href="@Url.Action("Create", "Product")" class="btn btn-dark-green">Add New Product</a>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-custom bg-beige">
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img src="@product.ImageUrl" alt="@product.Name" class="card-img-top img-fluid" style="height: 250px; object-fit: cover;">
+                    }
+                    else
+                    {
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 250px;">
+                            <span class="text-muted">No Image Available</span>
+                        </div>
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-dark-green">@product.Name</h5>
+                        <p class="card-text text-center text-muted">@product.description</p>
+                        <p class="card-text text-center font-weight-bold text-dark-green">@product.Price</p>
+                        <p class="card-text text-center text-muted">Inventory: @product.InventoryCount</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Edit", "Product", new { id = product.RowKey })" class="btn btn-dark-green btn-sm">Edit</a>
+                        <a href="@Url.Action("Delete", "Product", new { id = product.RowKey })" class="btn btn-danger btn-sm ml-2">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

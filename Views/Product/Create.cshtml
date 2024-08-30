@@ -1,0 +1,36 @@
+﻿@model Part1Cloud2B.Models.Product
+
+@{
+    ViewBag.Title = "Add New Product";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name">Product Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="description">Description</label>
+        <textarea asp-for="description" class="form-control"></textarea>
+        <span asp-validation-for="description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="InventoryCount">Inventory Count</label>
+        <input asp-for="InventoryCount" class="form-control" />
+        <span asp-validation-for="InventoryCount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl">Product Image</label>
+        <input type="file" name="imageFile" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+    <a href="@Url.Action("Index", "Product")" class="btn btn-secondary">Back to List</a>
+</form>
